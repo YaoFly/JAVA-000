@@ -12,11 +12,9 @@ public class CustomClassloader extends ClassLoader {
         if (cls != null) {
             return cls;
         }
-
         String path = "";
-        try {
-            InputStream is = new FileInputStream(path+name+".xlass");
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (InputStream is = new FileInputStream(path + name + ".xlass"); ByteArrayOutputStream baos = new ByteArrayOutputStream()
+        ) {
             int b;
             while ((b = is.read()) != -1) {
                 baos.write(255 - b);
