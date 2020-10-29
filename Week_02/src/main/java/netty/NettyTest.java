@@ -20,8 +20,7 @@ public class NettyTest {
                 .url("http://localhost:8081")
                 .build();
         Call call = client.newCall(request);
-        try {
-            Response response = call.execute();
+        try ( Response response = call.execute()){
             if(response.isSuccessful()){
                 System.out.println(response.message());
             }

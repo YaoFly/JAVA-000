@@ -35,7 +35,7 @@ public class MirrorServerHandler extends SimpleChannelInboundHandler<FullHttpReq
         HttpHeaders heads = response.headers();
         heads.add(HttpHeaderNames.CONTENT_TYPE, HttpHeaderValues.TEXT_PLAIN + "; charset=UTF-8");
         heads.add(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-        heads.add(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        heads.add(HttpHeaderNames.CONNECTION, HttpHeaderValues.CLOSE);
 
         channelHandlerContext.write(response);
     }
