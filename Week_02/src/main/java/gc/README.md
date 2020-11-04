@@ -29,7 +29,8 @@ G1 GC | 5699.6 | 206ms | 0ms | 0.1ms |
 吞吐量 Parallel GC > Serial GC > G1 GC > CMS GC  
 低延迟 CMS GC ~ G1 GC > Parallel GC ~ Serial GC  
 
-1. G1 在1s单位时间生成对象数最少的原因待研究,但是随着运行时间的增加,G1收集器算法的优势开始凸显，性能持平Parallel GC.
-可以从内存分配的角度深入研究原因。
+1. G1 在1s单位时间生成对象数最少的原因待研究,但是随着运行时间的增加,G1收集器算法的优势开始凸显，性能持平Parallel GC。
+猜测在其他GC算法的Full GC 的频次不高的情况下，G1的Yang GC效率相对劣势，但是随着其他算法Full GC的次数逐渐增多，
+G1的Full GC频次少的优势就体现出来了。
 2. 从sb压测的数据上来看，G1兼顾高吞吐量和低延迟的优点。
 3. 吞吐量上,Parallel GC一直有着稳定的表现，充分利用CPU性能。
