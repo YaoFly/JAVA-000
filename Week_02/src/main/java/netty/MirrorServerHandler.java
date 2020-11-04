@@ -22,12 +22,12 @@ public class MirrorServerHandler extends SimpleChannelInboundHandler<FullHttpReq
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channelReadComplete");
         super.channelReadComplete(ctx);
         ctx.flush();
     }
 
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, FullHttpRequest fullHttpRequest) {
+        System.out.println(fullHttpRequest.headers().get("nio"));
         DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                 HttpResponseStatus.OK,
                 Unpooled.wrappedBuffer("test".getBytes()));
